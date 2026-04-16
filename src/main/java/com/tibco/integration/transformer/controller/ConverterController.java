@@ -1,6 +1,7 @@
 package com.tibco.integration.transformer.controller;
 
 import com.tibco.integration.transformer.service.ConversionService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ConverterController
 {
+
+    @GetMapping("/health")
+    public String health()
+    {
+        return ConversionService.health();
+    }
+
 
     @PostMapping(value = "/json-to-xml", consumes = "application/json" , produces = "application/xml")
     public String jsonToXml(@RequestBody String json) throws Exception

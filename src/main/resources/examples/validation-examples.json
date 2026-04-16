@@ -1,0 +1,56 @@
+{
+  "fieldValidationExamples": {
+    "checkFieldExists": {
+      "endpoint": "POST /validate/field-exists",
+      "requestBody": {
+        "json": "{\"name\": \"John\", \"age\": 30, \"address\": {\"city\": \"New York\"}}",
+        "fieldName": "address.city"
+      },
+      "description": "Validates if the field 'address.city' exists in the JSON"
+    },
+    "checkFieldType": {
+      "endpoint": "POST /validate/field-type",
+      "requestBody": {
+        "json": "{\"name\": \"John\", \"age\": 30, \"active\": true}",
+        "fieldName": "age",
+        "expectedType": "number"
+      },
+      "description": "Validates if the field 'age' is of type number"
+    },
+    "checkFieldPattern": {
+      "endpoint": "POST /validate/field-pattern",
+      "requestBody": {
+        "json": "{\"email\": \"john@example.com\", \"phone\": \"123-456-7890\"}",
+        "fieldName": "email",
+        "pattern": "^[A-Za-z0-9+_.-]+@(.+)$"
+      },
+      "description": "Validates if the email field matches the email pattern"
+    },
+    "checkFieldRange": {
+      "endpoint": "POST /validate/field-range",
+      "requestBody": {
+        "json": "{\"age\": 25, \"score\": 85.5}",
+        "fieldName": "age",
+        "min": 18,
+        "max": 65
+      },
+      "description": "Validates if age is between 18 and 65"
+    },
+    "checkFieldNotEmpty": {
+      "endpoint": "POST /validate/field-not-empty",
+      "requestBody": {
+        "json": "{\"name\": \"John\", \"description\": \"\"}",
+        "fieldName": "description"
+      },
+      "description": "Validates if the description field is not null or empty"
+    },
+    "validateWithSchema": {
+      "endpoint": "POST /validate/schema",
+      "requestBody": {
+        "json": "{\"name\": \"John\", \"age\": 30, \"email\": \"john@example.com\"}",
+        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"required\": [\"name\", \"age\"],\n  \"properties\": {\n    \"name\": {\"type\": \"string\"},\n    \"age\": {\"type\": \"number\", \"minimum\": 0, \"maximum\": 150},\n    \"email\": {\"type\": \"string\", \"format\": \"email\"}\n  }\n}"
+      },
+      "description": "Validates JSON against a JSON Schema"
+    }
+  }
+}

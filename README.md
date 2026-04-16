@@ -21,16 +21,3 @@ POST /api/json-to-xml
 ### 2. XML → JSON
 POST /api/xml-to-json
 
-## Sample JSON
-{
-  "user": {
-    "name": "Prathmesh",
-    "age": 22
-  }
-}
-
-## Sample XML
-<user>
-  <name>Prathmesh</name>
-  <age>22</age>
-</user>
